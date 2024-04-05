@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="stylesheet" type="text/css" href="/static/CSS/style.css" />
+ <title> Coach </title>
+    {% macro render_form(combo_box) %}
+      <p>Coach:
+        <form>
+          <select name="coach">
+          {% set n = len(combo_box) %}
+
+          {% for i in range(n) %}
+            {% set id_m = combo_box.loc[i, "coach_id"] %}
+
+            {% if id_m == coach_id %}
+              <option selected value={{id_m}}>
+            {% else %}
+              <option value={{id_m}}>
+            {% endif %}
+              {{ combo_box.loc[i, "coach_full_name"] }}
+              </option>
+          {% endfor %}
+          </select>
+   <p>Date:
+     <input type="date" placeholder="Date of entry from" name="date_start">
+     befor
+     <input type="date" placeholder="Date of recording before" name="date_end">
+      <input type="submit" value="Search">
+              </p>
+        </form>
+      </p>
+    {% endmacro %}
+    {% macro render_table(table_name, relation) %}
+      <div class="tbl_container">
+        <p>
+          <b>{{table_name}} </b>
+        {% set n = len(relation) %}
+        </p>
+        <table>
+          <tr>
+            {% for name in relation.dtypes.index %}
+            <th>{{name}}</th>
+            {% endfor %}
+          </tr>
+
+          <tbody>
+            {% for i in range(n) %}
+            <tr>
+              {% for name in relation.dtypes.index %}
+                  <td> {{ relation.loc[i, name] }} </td>
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    {% endmacro %}
+</head>
+
+<body>
+ <div class="menu">
+ <ul>
+     <li><a href = "/templates/record.html">Record</a></li>
+     <li class ="active"><a href="/templates/index" method="get">Coach</a></li>
+     <li><a href="/templates/client.html">Client</a></li>
+ </ul>
+ </div>
+ <div class="block">
+ <p>
+ <form action='' method ="get" name="">
+    {{render_form(combo_box)}}
+ </form>
+ </p>
+{{render_table("Coach records", coach_record) }}
+ </div>
+</body>
+</html>
