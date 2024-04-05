@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/CSS/style.css" />
+ <title> Add client </title>
+ {% macro render_form() %}
+
+   <b>New client</b>
+  <form class="new_client_form">
+   Client's name: <input type="text" name="client_full_name"><br>
+   Client's phone number:  <input type="text" name="client_phone"><br>
+   <input type="submit" value="Add">
+  </form>
+
+ {% endmacro %}
+</head>
+
+<body>
+<div class="menu">
+</div>
+ <div class="block">
+      {{render_form()}}
+
+      <a href="/templates/record.html" class="back">Back</a>
+ </div>
+</body>
+</html>

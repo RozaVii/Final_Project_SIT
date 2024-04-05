@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <link rel="stylesheet" type="text/css" href="/static/CSS/style.css" />
+ <title> Add service </title>
+ {% macro render_form() %}
+
+   <b>New service</b>
+  <form class="new_service_form">
+   Name of the service: <input type="text" name="service_name"><br>
+   The cost of the service:  <input type="text" name="price"><br>
+   <input type="submit" value="Add">
+  </form>
+
+ {% endmacro %}
+</head>
+
+<body>
+<div class="menu">
+</div>
+ <div class="block">
+      {{render_form()}}
+
+      <a href="/templates/record.html" class="back">Back</a>
+ </div>
+</body>
+</html>
